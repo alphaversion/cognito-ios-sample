@@ -11,6 +11,7 @@ import AWSCore
 import AWSCognitoIdentityProvider
 import OAuthSwift
 import AWSAPIGateway
+import Apollo
 
 class TwitterIdentityProvider: NSObject, AWSIdentityProviderManager {
     let credential: OAuthSwiftCredential
@@ -104,13 +105,15 @@ class ViewController: UIViewController {
     // MARK: -
 
     func requestSampleAPI(_ configuration: AWSServiceConfiguration) {
-        HGWMyEventsTasteClient(configuration: configuration).rootPost().continueWith { t in
-            if let error = t.error {
+        let apollo = ApolloClient(networkTransport: APIGatewayNetworkTransport(
+            url: URL(string: apiEndpoint)!,
+            awsConfiguration: configuration))
+        apollo.fetch(query: HelloQuery()) { (result, error) in
+            if let error = error {
                 print(error.localizedDescription)
-                return nil
+            } else {
+                print(result?.data?.hello)
             }
-            print(t.result!)
-            return nil
         }
     }
 

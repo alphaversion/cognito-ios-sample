@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8540F4FE2289BB3100941672 /* APIGatewayNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */; };
+		8540F5002289DD0500941672 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8540F4FF2289DD0500941672 /* Apollo.framework */; };
+		8540F5092289F17600941672 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540F5062289F17600941672 /* API.swift */; };
 		857A54CD22856F56009F7623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A54CC22856F56009F7623 /* AppDelegate.swift */; };
 		857A54CF22856F56009F7623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A54CE22856F56009F7623 /* ViewController.swift */; };
 		857A54D222856F56009F7623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A54D022856F56009F7623 /* Main.storyboard */; };
@@ -21,12 +24,15 @@
 		857A55002287ADF3009F7623 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A54FF2287ADF3009F7623 /* Settings.swift */; };
 		857A55022289226B009F7623 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A55012289226A009F7623 /* OAuthSwift.framework */; };
 		857A5508228970EA009F7623 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A5507228970E9009F7623 /* AWSAPIGateway.framework */; };
-		857A550C22897217009F7623 /* HGWMyEventsTasteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A550B22897217009F7623 /* HGWMyEventsTasteClient.swift */; };
-		857A550E2289725E009F7623 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A550D2289725E009F7623 /* Empty.swift */; };
 		857EB726228999340030DED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EB725228999340030DED4 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGatewayNetworkTransport.swift; sourceTree = "<group>"; };
+		8540F4FF2289DD0500941672 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = SOURCE_ROOT; };
+		8540F5062289F17600941672 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		8540F5072289F17600941672 /* hello.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.graphql; sourceTree = "<group>"; };
+		8540F5082289F17600941672 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		857A54C922856F56009F7623 /* CognitoSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CognitoSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		857A54CC22856F56009F7623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		857A54CE22856F56009F7623 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,8 +49,6 @@
 		857A54FF2287ADF3009F7623 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		857A55012289226A009F7623 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = SOURCE_ROOT; };
 		857A5507228970E9009F7623 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = Carthage/Build/iOS/AWSAPIGateway.framework; sourceTree = SOURCE_ROOT; };
-		857A550B22897217009F7623 /* HGWMyEventsTasteClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HGWMyEventsTasteClient.swift; sourceTree = "<group>"; };
-		857A550D2289725E009F7623 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		857EB725228999340030DED4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,12 +65,47 @@
 				857A54FA2287A7F6009F7623 /* AWSCognitoIdentityProvider.framework in Frameworks */,
 				857A55022289226B009F7623 /* OAuthSwift.framework in Frameworks */,
 				857A54FB2287A7F6009F7623 /* AWSCognito.framework in Frameworks */,
+				8540F5002289DD0500941672 /* Apollo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8540F5012289DFAF00941672 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				8540F5062289F17600941672 /* API.swift */,
+				8540F5082289F17600941672 /* schema.json */,
+				8540F5042289E00B00941672 /* Fragments */,
+				8540F5032289E00400941672 /* Mutations */,
+				8540F5022289DFFC00941672 /* Queries */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		8540F5022289DFFC00941672 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				8540F5072289F17600941672 /* hello.graphql */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		8540F5032289E00400941672 /* Mutations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mutations;
+			sourceTree = "<group>";
+		};
+		8540F5042289E00B00941672 /* Fragments */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fragments;
+			sourceTree = "<group>";
+		};
 		857A54C022856F56009F7623 = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +126,7 @@
 		857A54CB22856F56009F7623 /* CognitoSample */ = {
 			isa = PBXGroup;
 			children = (
-				857A550A22897217009F7623 /* APIGateway */,
+				8540F5012289DFAF00941672 /* GraphQL */,
 				857A54FF2287ADF3009F7623 /* Settings.swift */,
 				857A54CC22856F56009F7623 /* AppDelegate.swift */,
 				857A54CE22856F56009F7623 /* ViewController.swift */,
@@ -96,6 +135,7 @@
 				857A54D522856F57009F7623 /* LaunchScreen.storyboard */,
 				857A54D822856F57009F7623 /* Info.plist */,
 				857EB725228999340030DED4 /* LoginViewController.swift */,
+				8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */,
 			);
 			path = CognitoSample;
 			sourceTree = "<group>";
@@ -103,6 +143,7 @@
 		857A54EF2287A7DD009F7623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8540F4FF2289DD0500941672 /* Apollo.framework */,
 				857A5507228970E9009F7623 /* AWSAPIGateway.framework */,
 				857A55012289226A009F7623 /* OAuthSwift.framework */,
 				857A54F42287A7F6009F7623 /* AWSCognito.framework */,
@@ -114,15 +155,6 @@
 			);
 			name = Frameworks;
 			path = CognitoSample;
-			sourceTree = "<group>";
-		};
-		857A550A22897217009F7623 /* APIGateway */ = {
-			isa = PBXGroup;
-			children = (
-				857A550D2289725E009F7623 /* Empty.swift */,
-				857A550B22897217009F7623 /* HGWMyEventsTasteClient.swift */,
-			);
-			path = APIGateway;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +169,7 @@
 				857A54C722856F56009F7623 /* Resources */,
 				857A54FE2287A813009F7623 /* Copy Carthage Frameworks */,
 				857A5509228970FD009F7623 /* Strip AWS Frameworks */,
+				8540F5052289E08800941672 /* Generate GraphQL Classes */,
 			);
 			buildRules = (
 			);
@@ -194,6 +227,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8540F5052289E08800941672 /* Generate GraphQL Classes */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate GraphQL Classes";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}/GraphQL\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
+		};
 		857A54FE2287A813009F7623 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +261,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AWSS3.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OAuthSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AWSAPIGateway.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputFileListPaths = (
@@ -223,6 +275,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSS3.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OAuthSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSAPIGateway.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Apollo.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -253,12 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8540F4FE2289BB3100941672 /* APIGatewayNetworkTransport.swift in Sources */,
 				857EB726228999340030DED4 /* LoginViewController.swift in Sources */,
 				857A55002287ADF3009F7623 /* Settings.swift in Sources */,
 				857A54CF22856F56009F7623 /* ViewController.swift in Sources */,
 				857A54CD22856F56009F7623 /* AppDelegate.swift in Sources */,
-				857A550C22897217009F7623 /* HGWMyEventsTasteClient.swift in Sources */,
-				857A550E2289725E009F7623 /* Empty.swift in Sources */,
+				8540F5092289F17600941672 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
