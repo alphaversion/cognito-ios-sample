@@ -1,0 +1,2 @@
+ github "aws-amplify/aws-sdk-ios"
+ github "OAuthSwift/OAuthSwift" ~> 1.2.0

@@ -12,6 +12,18 @@
 		857A54D222856F56009F7623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A54D022856F56009F7623 /* Main.storyboard */; };
 		857A54D422856F57009F7623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 857A54D322856F57009F7623 /* Assets.xcassets */; };
 		857A54D722856F57009F7623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A54D522856F57009F7623 /* LaunchScreen.storyboard */; };
+		857A54F72287A7F6009F7623 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A54F02287A7F6009F7623 /* AWSCore.framework */; };
+		857A54F92287A7F6009F7623 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A54F22287A7F6009F7623 /* AWSS3.framework */; };
+		857A54FA2287A7F6009F7623 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A54F32287A7F6009F7623 /* AWSCognitoIdentityProvider.framework */; };
+		857A54FB2287A7F6009F7623 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A54F42287A7F6009F7623 /* AWSCognito.framework */; };
+		857A54FC2287A7F6009F7623 /* AWSCognitoIdentityProviderASF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A54F52287A7F6009F7623 /* AWSCognitoIdentityProviderASF.framework */; };
+		857A54FD2287A7F6009F7623 /* AWSCognitoAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A54F62287A7F6009F7623 /* AWSCognitoAuth.framework */; };
+		857A55002287ADF3009F7623 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A54FF2287ADF3009F7623 /* Settings.swift */; };
+		857A55022289226B009F7623 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A55012289226A009F7623 /* OAuthSwift.framework */; };
+		857A5508228970EA009F7623 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A5507228970E9009F7623 /* AWSAPIGateway.framework */; };
+		857A550C22897217009F7623 /* HGWMyEventsTasteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A550B22897217009F7623 /* HGWMyEventsTasteClient.swift */; };
+		857A550E2289725E009F7623 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A550D2289725E009F7623 /* Empty.swift */; };
+		857EB726228999340030DED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EB725228999340030DED4 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +34,18 @@
 		857A54D322856F57009F7623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		857A54D622856F57009F7623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		857A54D822856F57009F7623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		857A54F02287A7F6009F7623 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Carthage/Build/iOS/AWSCore.framework; sourceTree = SOURCE_ROOT; };
+		857A54F22287A7F6009F7623 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = Carthage/Build/iOS/AWSS3.framework; sourceTree = SOURCE_ROOT; };
+		857A54F32287A7F6009F7623 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = Carthage/Build/iOS/AWSCognitoIdentityProvider.framework; sourceTree = SOURCE_ROOT; };
+		857A54F42287A7F6009F7623 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognito.framework; path = Carthage/Build/iOS/AWSCognito.framework; sourceTree = SOURCE_ROOT; };
+		857A54F52287A7F6009F7623 /* AWSCognitoIdentityProviderASF.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProviderASF.framework; path = Carthage/Build/iOS/AWSCognitoIdentityProviderASF.framework; sourceTree = SOURCE_ROOT; };
+		857A54F62287A7F6009F7623 /* AWSCognitoAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoAuth.framework; path = Carthage/Build/iOS/AWSCognitoAuth.framework; sourceTree = SOURCE_ROOT; };
+		857A54FF2287ADF3009F7623 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		857A55012289226A009F7623 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = SOURCE_ROOT; };
+		857A5507228970E9009F7623 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = Carthage/Build/iOS/AWSAPIGateway.framework; sourceTree = SOURCE_ROOT; };
+		857A550B22897217009F7623 /* HGWMyEventsTasteClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HGWMyEventsTasteClient.swift; sourceTree = "<group>"; };
+		857A550D2289725E009F7623 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		857EB725228999340030DED4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +53,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857A5508228970EA009F7623 /* AWSAPIGateway.framework in Frameworks */,
+				857A54FD2287A7F6009F7623 /* AWSCognitoAuth.framework in Frameworks */,
+				857A54FC2287A7F6009F7623 /* AWSCognitoIdentityProviderASF.framework in Frameworks */,
+				857A54F72287A7F6009F7623 /* AWSCore.framework in Frameworks */,
+				857A54F92287A7F6009F7623 /* AWSS3.framework in Frameworks */,
+				857A54FA2287A7F6009F7623 /* AWSCognitoIdentityProvider.framework in Frameworks */,
+				857A55022289226B009F7623 /* OAuthSwift.framework in Frameworks */,
+				857A54FB2287A7F6009F7623 /* AWSCognito.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +72,7 @@
 			children = (
 				857A54CB22856F56009F7623 /* CognitoSample */,
 				857A54CA22856F56009F7623 /* Products */,
+				857A54EF2287A7DD009F7623 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +87,42 @@
 		857A54CB22856F56009F7623 /* CognitoSample */ = {
 			isa = PBXGroup;
 			children = (
+				857A550A22897217009F7623 /* APIGateway */,
+				857A54FF2287ADF3009F7623 /* Settings.swift */,
 				857A54CC22856F56009F7623 /* AppDelegate.swift */,
 				857A54CE22856F56009F7623 /* ViewController.swift */,
 				857A54D022856F56009F7623 /* Main.storyboard */,
 				857A54D322856F57009F7623 /* Assets.xcassets */,
 				857A54D522856F57009F7623 /* LaunchScreen.storyboard */,
 				857A54D822856F57009F7623 /* Info.plist */,
+				857EB725228999340030DED4 /* LoginViewController.swift */,
 			);
 			path = CognitoSample;
+			sourceTree = "<group>";
+		};
+		857A54EF2287A7DD009F7623 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				857A5507228970E9009F7623 /* AWSAPIGateway.framework */,
+				857A55012289226A009F7623 /* OAuthSwift.framework */,
+				857A54F42287A7F6009F7623 /* AWSCognito.framework */,
+				857A54F62287A7F6009F7623 /* AWSCognitoAuth.framework */,
+				857A54F32287A7F6009F7623 /* AWSCognitoIdentityProvider.framework */,
+				857A54F52287A7F6009F7623 /* AWSCognitoIdentityProviderASF.framework */,
+				857A54F02287A7F6009F7623 /* AWSCore.framework */,
+				857A54F22287A7F6009F7623 /* AWSS3.framework */,
+			);
+			name = Frameworks;
+			path = CognitoSample;
+			sourceTree = "<group>";
+		};
+		857A550A22897217009F7623 /* APIGateway */ = {
+			isa = PBXGroup;
+			children = (
+				857A550D2289725E009F7623 /* Empty.swift */,
+				857A550B22897217009F7623 /* HGWMyEventsTasteClient.swift */,
+			);
+			path = APIGateway;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +135,8 @@
 				857A54C522856F56009F7623 /* Sources */,
 				857A54C622856F56009F7623 /* Frameworks */,
 				857A54C722856F56009F7623 /* Resources */,
+				857A54FE2287A813009F7623 /* Copy Carthage Frameworks */,
+				857A5509228970FD009F7623 /* Strip AWS Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +193,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		857A54FE2287A813009F7623 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCognito.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCognitoAuth.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCognitoIdentityProvider.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCognitoIdentityProviderASF.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSS3.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OAuthSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AWSAPIGateway.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSCognito.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSCognitoAuth.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSCognitoIdentityProvider.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSCognitoIdentityProviderASF.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSCore.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSS3.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OAuthSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AWSAPIGateway.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		857A5509228970FD009F7623 /* Strip AWS Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip AWS Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework/strip-frameworks.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		857A54C522856F56009F7623 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857EB726228999340030DED4 /* LoginViewController.swift in Sources */,
+				857A55002287ADF3009F7623 /* Settings.swift in Sources */,
 				857A54CF22856F56009F7623 /* ViewController.swift in Sources */,
 				857A54CD22856F56009F7623 /* AppDelegate.swift in Sources */,
+				857A550C22897217009F7623 /* HGWMyEventsTasteClient.swift in Sources */,
+				857A550E2289725E009F7623 /* Empty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +406,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CognitoSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +428,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CognitoSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
