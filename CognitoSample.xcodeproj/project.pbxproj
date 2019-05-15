@@ -25,6 +25,7 @@
 		857A55022289226B009F7623 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A55012289226A009F7623 /* OAuthSwift.framework */; };
 		857A5508228970EA009F7623 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A5507228970E9009F7623 /* AWSAPIGateway.framework */; };
 		857EB726228999340030DED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EB725228999340030DED4 /* LoginViewController.swift */; };
+		85F09672228BF74100C6F4C8 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F09671228BF74100C6F4C8 /* Authenticator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		857A55012289226A009F7623 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = SOURCE_ROOT; };
 		857A5507228970E9009F7623 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = Carthage/Build/iOS/AWSAPIGateway.framework; sourceTree = SOURCE_ROOT; };
 		857EB725228999340030DED4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		85F09671228BF74100C6F4C8 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		8540F5012289DFAF00941672 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */,
 				8540F5062289F17600941672 /* API.swift */,
 				8540F5082289F17600941672 /* schema.json */,
 				8540F5042289E00B00941672 /* Fragments */,
@@ -126,6 +129,7 @@
 		857A54CB22856F56009F7623 /* CognitoSample */ = {
 			isa = PBXGroup;
 			children = (
+				85F09673228BF76300C6F4C8 /* Authentication */,
 				8540F5012289DFAF00941672 /* GraphQL */,
 				857A54FF2287ADF3009F7623 /* Settings.swift */,
 				857A54CC22856F56009F7623 /* AppDelegate.swift */,
@@ -135,7 +139,6 @@
 				857A54D522856F57009F7623 /* LaunchScreen.storyboard */,
 				857A54D822856F57009F7623 /* Info.plist */,
 				857EB725228999340030DED4 /* LoginViewController.swift */,
-				8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */,
 			);
 			path = CognitoSample;
 			sourceTree = "<group>";
@@ -155,6 +158,14 @@
 			);
 			name = Frameworks;
 			path = CognitoSample;
+			sourceTree = "<group>";
+		};
+		85F09673228BF76300C6F4C8 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				85F09671228BF74100C6F4C8 /* Authenticator.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8540F4FE2289BB3100941672 /* APIGatewayNetworkTransport.swift in Sources */,
+				85F09672228BF74100C6F4C8 /* Authenticator.swift in Sources */,
 				857EB726228999340030DED4 /* LoginViewController.swift in Sources */,
 				857A55002287ADF3009F7623 /* Settings.swift in Sources */,
 				857A54CF22856F56009F7623 /* ViewController.swift in Sources */,
