@@ -107,3 +107,5 @@ iOSInjectionProject/
 Swttings.swift
 /Carthage
 Settings.swift
+node_modules
+
