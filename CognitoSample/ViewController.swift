@@ -52,22 +52,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func twitterSignin(_ sender: Any) {
-        let oauthswift = OAuth1Swift(
-            consumerKey:    twitterConsumerKey,
-            consumerSecret: twitterConsumerSecret,
-            requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-            authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-            accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
-        )
-        oauthRequestHandle = oauthswift.authorize(
-            withCallbackURL: URL(string: twitterOAuthCallbackURL)!,
-            success: { credential, response, parameters in
-                self.setupCognito(TwitterIdentityProvider(credential))
-        },
-            failure: { error in
-                print(error.localizedDescription)
-        })
-        self.oauthswift = oauthswift
     }
 
     @IBAction func emailSignin(_ sender: Any) {
