@@ -12,6 +12,7 @@ import AWSCognitoIdentityProvider
 import OAuthSwift
 import AWSAPIGateway
 import Apollo
+import AuthenticationServices
 
 class TwitterIdentityProvider: NSObject, AWSIdentityProviderManager {
     let credential: OAuthSwiftCredential
@@ -36,10 +37,11 @@ class CognitoIdentityProvider: NSObject, AWSIdentityProviderManager {
     }
 }
 
-class ViewController: UIViewController {
-    var userPool: AWSCognitoIdentityUserPool!
+class ViewController: UIViewController, OAuthSwiftURLHandlerType {
+    var userPool: AWSCognitoIdentityUserPool?
     var oauthswift: OAuth1Swift?
     var oauthRequestHandle: OAuthSwiftRequestHandle?
+    var authSession: ASWebAuthenticationSession?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
@@ -59,6 +61,7 @@ class ViewController: UIViewController {
             authorizeUrl:    "https://api.twitter.com/oauth/authorize",
             accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
         )
+        oauthswift.authorizeURLHandler = self
         oauthRequestHandle = oauthswift.authorize(
             withCallbackURL: URL(string: twitterOAuthCallbackURL)!,
             success: { credential, response, parameters in
@@ -86,23 +89,40 @@ class ViewController: UIViewController {
 
         AWSServiceManager.default().defaultServiceConfiguration = configuration
 
-        userPool = AWSCognitoIdentityUserPool(forKey: cognitoUserPoolKey)
+        let userPool = AWSCognitoIdentityUserPool(forKey: cognitoUserPoolKey)
         userPool.delegate = self
         userPool.currentUser()?.getSession().continueWith { t in
             if let error = t.error {
                 print(error.localizedDescription)
                 return nil
             }
-            self.setupCognito(CognitoIdentityProvider(self.userPool, token: t.result!.idToken!.tokenString))
+            guard let userPool = self.userPool else {
+                return nil
+            }
+            self.setupCognito(CognitoIdentityProvider(userPool, token: t.result!.idToken!.tokenString))
             return nil
         }
+        self.userPool = userPool
     }
 
     @IBAction func signout(_ sender: Any) {
-        userPool.clearAll()
+        userPool?.clearAll()
     }
 
     // MARK: -
+    
+    func handle(_ url: URL) {
+        let session = ASWebAuthenticationSession(url: url, callbackURLScheme: "cognito-sample://") { [weak self] (url, error) in
+            self?.authSession = nil
+            if let url = url {
+                OAuthSwift.handle(url: url)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        session.start()
+        authSession = session
+    }
 
     func requestSampleAPI(_ configuration: AWSServiceConfiguration) {
         let apollo = ApolloClient(networkTransport: APIGatewayNetworkTransport(
