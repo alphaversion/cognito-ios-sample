@@ -9,68 +9,82 @@
 import Foundation
 import Apollo
 import AWSCore
+import AWSCognitoIdentityProvider
 
 public class APIGatewayNetworkTransport: NetworkTransport {
+    class GetSessionTask: NSObject, Cancellable {
+        var isCancelled: Bool = false
+        func getSession(completionHandler: @escaping (_ session: AWSCognitoIdentityUserSession?, _ error: Error?) -> Void) -> GetSessionTask {
+            Authenticator.default.userPool.currentUser()!.getSession().continueWith { t in
+                if (!self.isCancelled) {
+                    completionHandler(t.result, nil)
+                }
+                return nil
+            }
+            return self
+        }
+        func cancel() {
+            isCancelled = true
+        }
+    }
     let url: URL
     let session: URLSession
     let serializationFormat = JSONSerializationFormat.self
-    let awsConfiguration: AWSServiceConfiguration
 
-    public init(url: URL, configuration: URLSessionConfiguration = URLSessionConfiguration.default, awsConfiguration: AWSServiceConfiguration, sendOperationIdentifiers: Bool = false) {
+    public init(url: URL, configuration: URLSessionConfiguration = URLSessionConfiguration.default, sendOperationIdentifiers: Bool = false) {
         self.url = url
         self.session = URLSession(configuration: configuration)
         self.sendOperationIdentifiers = sendOperationIdentifiers
-        self.awsConfiguration = awsConfiguration
     }
 
     public func send<Operation>(operation: Operation, completionHandler: @escaping (_ response: GraphQLResponse<Operation>?, _ error: Error?) -> Void) -> Cancellable {
-        let request = URLRequest(url: url) as! NSMutableURLRequest
+        let request = URLRequest(url: url)  as! NSMutableURLRequest
         request.httpMethod = "POST"
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let body = requestBody(for: operation)
         request.httpBody = try! serializationFormat.serialize(value: body)
-        request.addValue(NSDate().aws_stringValue(AWSDateISO8601DateFormat2), forHTTPHeaderField: "X-Amz-Date")
 
-        let endpoint = AWSEndpoint(region: awsConfiguration.regionType, service: .APIGateway, url: url)
-        let signer: AWSSignatureV4Signer = AWSSignatureV4Signer(credentialsProvider: awsConfiguration.credentialsProvider, endpoint: endpoint)
-        signer.interceptRequest(request)
-
-        let task = session.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in
-            if error != nil {
-                completionHandler(nil, error)
-                return
+        return GetSessionTask().getSession { (userSession: AWSCognitoIdentityUserSession?, error: Error?) in
+            if let token = userSession?.idToken?.tokenString {
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             }
 
-            guard let httpResponse = response as? HTTPURLResponse else {
-                fatalError("Response should be an HTTPURLResponse")
-            }
-
-            if (!(200..<300).contains(httpResponse.statusCode)) {
-                completionHandler(nil, GraphQLHTTPResponseError(body: data, response: httpResponse, kind: .errorResponse))
-                return
-            }
-
-            guard let data = data else {
-                completionHandler(nil, GraphQLHTTPResponseError(body: nil, response: httpResponse, kind: .invalidResponse))
-                return
-            }
-
-            do {
-                guard let body =  try self.serializationFormat.deserialize(data: data) as? JSONObject else {
-                    throw GraphQLHTTPResponseError(body: data, response: httpResponse, kind: .invalidResponse)
+            let task = self.session.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in
+                if error != nil {
+                    completionHandler(nil, error)
+                    return
                 }
-                let response = GraphQLResponse(operation: operation, body: body)
-                completionHandler(response, nil)
-            } catch {
-                completionHandler(nil, error)
+
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    fatalError("Response should be an HTTPURLResponse")
+                }
+
+                if (!(200..<300).contains(httpResponse.statusCode)) {
+                    completionHandler(nil, GraphQLHTTPResponseError(body: data, response: httpResponse, kind: .errorResponse))
+                    return
+                }
+
+                guard let data = data else {
+                    completionHandler(nil, GraphQLHTTPResponseError(body: nil, response: httpResponse, kind: .invalidResponse))
+                    return
+                }
+
+                do {
+                    guard let body =  try self.serializationFormat.deserialize(data: data) as? JSONObject else {
+                        throw GraphQLHTTPResponseError(body: data, response: httpResponse, kind: .invalidResponse)
+                    }
+                    let response = GraphQLResponse(operation: operation, body: body)
+                    completionHandler(response, nil)
+                } catch {
+                    completionHandler(nil, error)
+                }
             }
+
+            task.resume()
+
         }
-
-        task.resume()
-
-        return task
     }
 
     private let sendOperationIdentifiers: Bool
