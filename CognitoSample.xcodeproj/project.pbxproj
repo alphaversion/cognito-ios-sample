@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		852A0E1D228CB2EC00628CC2 /* ApolloClientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852A0E1C228CB2EC00628CC2 /* ApolloClientExtension.swift */; };
 		8540F4FE2289BB3100941672 /* APIGatewayNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */; };
 		8540F5002289DD0500941672 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8540F4FF2289DD0500941672 /* Apollo.framework */; };
 		8540F5092289F17600941672 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540F5062289F17600941672 /* API.swift */; };
@@ -24,10 +25,11 @@
 		857A55002287ADF3009F7623 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A54FF2287ADF3009F7623 /* Settings.swift */; };
 		857A55022289226B009F7623 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A55012289226A009F7623 /* OAuthSwift.framework */; };
 		857A5508228970EA009F7623 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A5507228970E9009F7623 /* AWSAPIGateway.framework */; };
-		857EB726228999340030DED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EB725228999340030DED4 /* LoginViewController.swift */; };
+		85F09672228BF74100C6F4C8 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F09671228BF74100C6F4C8 /* Authenticator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		852A0E1C228CB2EC00628CC2 /* ApolloClientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloClientExtension.swift; sourceTree = "<group>"; };
 		8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGatewayNetworkTransport.swift; sourceTree = "<group>"; };
 		8540F4FF2289DD0500941672 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = SOURCE_ROOT; };
 		8540F5062289F17600941672 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -49,7 +51,7 @@
 		857A54FF2287ADF3009F7623 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		857A55012289226A009F7623 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = SOURCE_ROOT; };
 		857A5507228970E9009F7623 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = Carthage/Build/iOS/AWSAPIGateway.framework; sourceTree = SOURCE_ROOT; };
-		857EB725228999340030DED4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		85F09671228BF74100C6F4C8 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,9 @@
 		8540F5012289DFAF00941672 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				85F09671228BF74100C6F4C8 /* Authenticator.swift */,
+				852A0E1C228CB2EC00628CC2 /* ApolloClientExtension.swift */,
+				8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */,
 				8540F5062289F17600941672 /* API.swift */,
 				8540F5082289F17600941672 /* schema.json */,
 				8540F5042289E00B00941672 /* Fragments */,
@@ -134,8 +139,6 @@
 				857A54D322856F57009F7623 /* Assets.xcassets */,
 				857A54D522856F57009F7623 /* LaunchScreen.storyboard */,
 				857A54D822856F57009F7623 /* Info.plist */,
-				857EB725228999340030DED4 /* LoginViewController.swift */,
-				8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */,
 			);
 			path = CognitoSample;
 			sourceTree = "<group>";
@@ -307,7 +310,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8540F4FE2289BB3100941672 /* APIGatewayNetworkTransport.swift in Sources */,
-				857EB726228999340030DED4 /* LoginViewController.swift in Sources */,
+				852A0E1D228CB2EC00628CC2 /* ApolloClientExtension.swift in Sources */,
+				85F09672228BF74100C6F4C8 /* Authenticator.swift in Sources */,
 				857A55002287ADF3009F7623 /* Settings.swift in Sources */,
 				857A54CF22856F56009F7623 /* ViewController.swift in Sources */,
 				857A54CD22856F56009F7623 /* AppDelegate.swift in Sources */,
