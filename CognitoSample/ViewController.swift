@@ -34,6 +34,11 @@ class ViewController: UIViewController, OAuthSwiftURLHandlerType {
     @IBOutlet weak var inputUsername: UITextField!
     @IBOutlet weak var inputPassword: UITextField!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateInfo()
+    }
+    
     @IBAction func twitterSignin(_ sender: Any) {
         Authenticator.default.signinWithTwitter { session, error in
             if let error = error {
@@ -100,6 +105,11 @@ class ViewController: UIViewController, OAuthSwiftURLHandlerType {
 
     @IBAction func signout(_ sender: Any) {
         Authenticator.default.signout()
+        updateInfo()
+    }
+    
+    func updateInfo() {
+        print("isSignIn: \(Authenticator.default.isSignIn)")
     }
 
     // MARK: -
@@ -125,6 +135,8 @@ class ViewController: UIViewController, OAuthSwiftURLHandlerType {
                 print(result?.data?.hello ?? "(empty)")
             }
         }
+        
+        updateInfo()
     }
 
     func showError(_ error: Error) {

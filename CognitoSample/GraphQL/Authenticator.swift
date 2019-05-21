@@ -107,6 +107,10 @@ class Authenticator {
         userPool.clearLastKnownUser()
         userPool.clearAll()
     }
+    
+    var isSignIn: Bool {
+        return userPool.currentUser()?.isSignedIn ?? false
+    }
 
     class TwitterAuthentication: NSObject, AWSCognitoIdentityCustomAuthentication, AWSCognitoIdentityInteractiveAuthenticationDelegate {
         private var oauthRequestHandle: OAuthSwiftRequestHandle?
