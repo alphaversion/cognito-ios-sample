@@ -10,6 +10,7 @@ import Foundation
 import AWSCore
 import AWSCognitoIdentityProvider
 import OAuthSwift
+import AuthenticationServices
 
 typealias UserSessionCompletionHandler = (_ session: AWSCognitoIdentityUserSession?, _ error: Error?) -> Void
 typealias ErrorCompletionHandler = (_ error: Error?) -> Void
@@ -112,11 +113,12 @@ class Authenticator {
         return userPool.currentUser()?.isSignedIn ?? false
     }
 
-    class TwitterAuthentication: NSObject, AWSCognitoIdentityCustomAuthentication, AWSCognitoIdentityInteractiveAuthenticationDelegate {
+    class TwitterAuthentication: NSObject, AWSCognitoIdentityCustomAuthentication, AWSCognitoIdentityInteractiveAuthenticationDelegate, OAuthSwiftURLHandlerType {
         private var oauthRequestHandle: OAuthSwiftRequestHandle?
         var details: AWSCognitoIdentityCustomChallengeDetails?
         let oauth: OAuth1Swift
         var errorHandler: ErrorCompletionHandler?
+        var authSession: ASWebAuthenticationSession?
 
         override init() {
             oauth = OAuth1Swift(
@@ -126,6 +128,8 @@ class Authenticator {
                 authorizeUrl:    "https://api.twitter.com/oauth/authorize",
                 accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
             )
+            super.init()
+            oauth.authorizeURLHandler = self
         }
 
         func authorize(success: @escaping OAuthSwift.TokenSuccessHandler, failure: OAuthSwift.FailureHandler?) {
@@ -167,6 +171,19 @@ class Authenticator {
             }) { error in
                 customAuthCompletionSource.set(error: error)
             }
+        }
+        
+        func handle(_ url: URL) {
+            let session = ASWebAuthenticationSession(url: url, callbackURLScheme: "cognito-sample://") { [weak self] (url, error) in
+                self?.authSession = nil
+                if let url = url {
+                    OAuthSwift.handle(url: url)
+                } else if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
+            session.start()
+            authSession = session
         }
     }
 }
