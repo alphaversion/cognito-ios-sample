@@ -14,7 +14,13 @@ import OAuthSwift
 typealias UserSessionCompletionHandler = (_ session: AWSCognitoIdentityUserSession?, _ error: Error?) -> Void
 typealias ErrorCompletionHandler = (_ error: Error?) -> Void
 
+struct SigninCredentials {
+    let username: String;
+    let password: String;
+}
+
 class Authenticator {
+    var user: AWSCognitoIdentityUser?
     private static var _default: Authenticator?
     static var `default`: Authenticator {
         if let authenticator = _default {
@@ -41,6 +47,19 @@ class Authenticator {
     }()
     
     private var twitterAuthentication: TwitterAuthentication?
+    private var pendingSigninCredentials: SigninCredentials?
+
+    func verify(code: String, completion: @escaping UserSessionCompletionHandler) {
+        guard let user = self.user, let username = pendingSigninCredentials?.username, let password = pendingSigninCredentials?.password else { return }
+        pendingSigninCredentials = nil
+        user.confirmSignUp(code).continueWith { t in
+            if let error = t.error {
+                completion(nil, error)
+                return nil
+            }
+            return self.signin(username: username, password: password, completion: completion)
+        }
+    }
     
     func signupWithTwitter(_ completion: @escaping UserSessionCompletionHandler) {
         signout()
@@ -67,21 +86,25 @@ class Authenticator {
                 completion(nil, error)
         })
     }
-
-    func signup(username: String, password: String, completion: @escaping UserSessionCompletionHandler) {
+    
+    func signup(username: String, email: String,  password: String, completion: @escaping UserSessionCompletionHandler) {
         signout()
-        userPool.signUp(username, password: password, userAttributes: nil, validationData: nil).continueWith { t in
-            if let error = t.error {
-                completion(nil, error)
+        pendingSigninCredentials = SigninCredentials(username: username, password: password)
+        userPool.signUp(username, password: password, userAttributes: [
+            AWSCognitoIdentityUserAttributeType(name: "email", value: email)], validationData: nil).continueWith { t in
+                if let error = t.error {
+                    completion(nil, error)
+                    return nil
+                }
+                let user = t.result!.user
+                self.user = user
+                user.getSession(username, password: password, validationData: nil).continueWith { t in
+                    completion(t.result, t.error)
+                }
                 return nil
-            }
-            t.result!.user.getSession(username, password: password, validationData: nil).continueWith { t in
-                completion(t.result, t.error)
-            }
-            return nil
         }
     }
-
+    
     func signinWithTwitter(_ completion: @escaping UserSessionCompletionHandler) {
         signout()
         twitterAuthentication = TwitterAuthentication()
@@ -93,27 +116,31 @@ class Authenticator {
             completion(t.result, t.error)
         }
     }
-
+    
     func signin(username: String, password: String, completion: @escaping UserSessionCompletionHandler) {
         signout()
-        userPool.getUser().getSession(username, password: password, validationData: nil).continueWith { t in
+        pendingSigninCredentials = SigninCredentials(username: username, password: password)
+        let user = userPool.getUser(username)
+        self.user = user
+        user.getSession(username, password: password, validationData: nil).continueWith { t in
             completion(t.result, t.error)
         }
     }
-
+    
     func signout() {
+        pendingSigninCredentials = nil
         twitterAuthentication?.cancel()
         userPool.currentUser()?.clearSession()
         userPool.clearLastKnownUser()
         userPool.clearAll()
     }
-
+    
     class TwitterAuthentication: NSObject, AWSCognitoIdentityCustomAuthentication, AWSCognitoIdentityInteractiveAuthenticationDelegate {
         private var oauthRequestHandle: OAuthSwiftRequestHandle?
         var details: AWSCognitoIdentityCustomChallengeDetails?
         let oauth: OAuth1Swift
         var errorHandler: ErrorCompletionHandler?
-
+        
         override init() {
             oauth = OAuth1Swift(
                 consumerKey:    twitterConsumerKey,
@@ -123,27 +150,27 @@ class Authenticator {
                 accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
             )
         }
-
+        
         func authorize(success: @escaping OAuthSwift.TokenSuccessHandler, failure: OAuthSwift.FailureHandler?) {
             oauth.authorize(withCallbackURL: URL(string: twitterOAuthCallbackURL)!, success: success, failure: failure)
         }
-
+        
         func cancel() {
             oauthRequestHandle?.cancel()
             oauthRequestHandle = nil
         }
-
+        
         func startCustomAuthentication() -> AWSCognitoIdentityCustomAuthentication {
             return self
         }
-
+        
         func didCompleteStepWithError(_ error: Error?) {
             if let _ = error {
                 cancel()
                 errorHandler?(error)
             }
         }
-
+        
         func getCustomChallengeDetails(
             _ authenticationInput: AWSCognitoIdentityCustomAuthenticationInput,
             customAuthCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityCustomChallengeDetails>) {
