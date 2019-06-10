@@ -11,8 +11,12 @@
 		8540F4FE2289BB3100941672 /* APIGatewayNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540F4FD2289BB3100941672 /* APIGatewayNetworkTransport.swift */; };
 		8540F5002289DD0500941672 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8540F4FF2289DD0500941672 /* Apollo.framework */; };
 		8540F5092289F17600941672 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540F5062289F17600941672 /* API.swift */; };
+		854D81B922AE2A4700F0C7D6 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854D81B822AE2A4700F0C7D6 /* RootViewController.swift */; };
+		854D81BB22AE2A5C00F0C7D6 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854D81BA22AE2A5C00F0C7D6 /* SigninViewController.swift */; };
+		854D81BD22AE2A6400F0C7D6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854D81BC22AE2A6400F0C7D6 /* SignupViewController.swift */; };
+		854D81C122AE334F00F0C7D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854D81C022AE334F00F0C7D6 /* BaseViewController.swift */; };
+		854D81C322AE341B00F0C7D6 /* VerifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854D81C222AE341B00F0C7D6 /* VerifyCodeViewController.swift */; };
 		857A54CD22856F56009F7623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A54CC22856F56009F7623 /* AppDelegate.swift */; };
-		857A54CF22856F56009F7623 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A54CE22856F56009F7623 /* ViewController.swift */; };
 		857A54D222856F56009F7623 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A54D022856F56009F7623 /* Main.storyboard */; };
 		857A54D422856F57009F7623 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 857A54D322856F57009F7623 /* Assets.xcassets */; };
 		857A54D722856F57009F7623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 857A54D522856F57009F7623 /* LaunchScreen.storyboard */; };
@@ -35,9 +39,13 @@
 		8540F5062289F17600941672 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8540F5072289F17600941672 /* hello.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.graphql; sourceTree = "<group>"; };
 		8540F5082289F17600941672 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		854D81B822AE2A4700F0C7D6 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		854D81BA22AE2A5C00F0C7D6 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		854D81BC22AE2A6400F0C7D6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		854D81C022AE334F00F0C7D6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		854D81C222AE341B00F0C7D6 /* VerifyCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeViewController.swift; sourceTree = "<group>"; };
 		857A54C922856F56009F7623 /* CognitoSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CognitoSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		857A54CC22856F56009F7623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		857A54CE22856F56009F7623 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		857A54D122856F56009F7623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		857A54D322856F57009F7623 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		857A54D622856F57009F7623 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -134,11 +142,15 @@
 				8540F5012289DFAF00941672 /* GraphQL */,
 				857A54FF2287ADF3009F7623 /* Settings.swift */,
 				857A54CC22856F56009F7623 /* AppDelegate.swift */,
-				857A54CE22856F56009F7623 /* ViewController.swift */,
 				857A54D022856F56009F7623 /* Main.storyboard */,
 				857A54D322856F57009F7623 /* Assets.xcassets */,
 				857A54D522856F57009F7623 /* LaunchScreen.storyboard */,
 				857A54D822856F57009F7623 /* Info.plist */,
+				854D81C022AE334F00F0C7D6 /* BaseViewController.swift */,
+				854D81B822AE2A4700F0C7D6 /* RootViewController.swift */,
+				854D81BA22AE2A5C00F0C7D6 /* SigninViewController.swift */,
+				854D81BC22AE2A6400F0C7D6 /* SignupViewController.swift */,
+				854D81C222AE341B00F0C7D6 /* VerifyCodeViewController.swift */,
 			);
 			path = CognitoSample;
 			sourceTree = "<group>";
@@ -310,12 +322,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8540F4FE2289BB3100941672 /* APIGatewayNetworkTransport.swift in Sources */,
+				854D81C122AE334F00F0C7D6 /* BaseViewController.swift in Sources */,
+				854D81C322AE341B00F0C7D6 /* VerifyCodeViewController.swift in Sources */,
 				852A0E1D228CB2EC00628CC2 /* ApolloClientExtension.swift in Sources */,
+				854D81BD22AE2A6400F0C7D6 /* SignupViewController.swift in Sources */,
 				85F09672228BF74100C6F4C8 /* Authenticator.swift in Sources */,
 				857A55002287ADF3009F7623 /* Settings.swift in Sources */,
-				857A54CF22856F56009F7623 /* ViewController.swift in Sources */,
 				857A54CD22856F56009F7623 /* AppDelegate.swift in Sources */,
+				854D81B922AE2A4700F0C7D6 /* RootViewController.swift in Sources */,
 				8540F5092289F17600941672 /* API.swift in Sources */,
+				854D81BB22AE2A5C00F0C7D6 /* SigninViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
