@@ -62,6 +62,13 @@ class Authenticator {
         }
     }
     
+    func resend(username: String, completion: @escaping ErrorCompletionHandler) {
+        userPool.getUser(username).resendConfirmationCode().continueWith { t in
+            completion(t.error)
+            return nil
+        }
+    }
+    
     func signupWithTwitter(_ completion: @escaping UserSessionCompletionHandler) {
         signout()
         twitterAuthentication = TwitterAuthentication()
